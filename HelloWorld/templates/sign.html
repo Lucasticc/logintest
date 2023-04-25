@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>注册页面</title>
+   <style>
+       body{
+       text-align:center;
+      }
+   </style>
+</head>
+<body>
+<form action="/sign/" method="post">
+  {% csrf_token %}
+   <h1 align="center">注册页面</h1>
+   <p class="divs" align ="center">
+       <label for="username">用户名:</label>
+       <input type="text" id="username" name="username" align="center">
+   </p>
+   <p class="divs" align ="center">
+       &nbsp&nbsp&nbsp<label for="password">密码:</label>
+       <input type="password" id="password" name="password">
+   </p>
+   <p class="divs" align ="center">
+    <label for="phone">电话:</label>
+    <input type="text" id="phone" name="phone" align="center">
+    </p>
+   <input type="submit" value="注册" align ="center">
+
+</form>
+<form action="/rtin/" method="post">
+  {% csrf_token %}
+   <input type="submit" value="返回" align ="center">
+
+</form>
+   <!-- 单独展一行 -->
+   <span style="color:red">
+    {{ error }}</span>
+
+
+</body>
+</html>
