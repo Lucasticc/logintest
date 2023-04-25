@@ -3,18 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .content div{
+            border: 0cap;
+            float:inherit
+        }
+        .up{
+            height: 10;
+        }
+        .middle{
+            height: 20px;
+        }
+        .dibu{
+            height: 10%;
+        }
+        h1{
+            text-align:center
+        }
+    </style>
 </head>
 <body>
  
- 
-<h2>index 页面。。。</h2>
- 
- 
-<a href="/logout/">注销</a>
+ <div class="content">
+    <div class="up">菜单栏
+        <a href="/logout/">注销</a>
+            <h1>欢迎{{m}}登陆主页</h1>
+        <hr>
    <!-- 单独展一行 -->
 </p>
-<span style="color:red">
- {{ m }}</span>
+    </div>
+<form action="/upload/" method="post">
+    {% csrf_token %}
+    <div class="middle">内容</div>
+    <p class="divs" align ="center">
+        <label for="username">标题:</label>
+        <input type="text" id="blog_title" name="blog_title" align="center">
+    </p>
+    <p class="divs" align ="center">
+        &nbsp&nbsp&nbsp<label for="blog_content">内容:</label>
+        <input type="text" id="blog_content" name="blog_content">
+    </p>
+    <input type="submit" value="提交" align="center">
+</form>
+    <hr>
+    <div class="dibu">底部</div>
+ </div>
+
+
+
  
+
 </body>
 </html>

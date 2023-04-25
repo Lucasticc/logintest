@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 # from django.contrib.auth.models import User, auth
-from TestModel.models import User,BlogType,TTag
+from TestModel.models import User,BlogType,TTag,TBlog
 from datetime import datetime
 
 
@@ -59,3 +59,13 @@ def logout(request):
     rep.delete_cookie("is_login")
     request.session.flush() # 删除一条记录包括(session_key session_data expire_date)三个字段
     return rep # 点击注销后执行,删除cookie,不再保存用户状态，并弹到登录页面
+def upload(request):
+    if request.method == 'POST':
+        username = request.session.get('user1')
+        blog_title = request.POST.get('blog_title')
+        blog_content = request.POST.get('blog_content')
+        # id1 = User.objects.filter(username = username).first()[0].id
+        s = TBlog(blog_title=blog_title,blog_content=blog_content,blog_status=1,create_time=datetime.now())
+        s.save()
+        return redirect('/index/')
+

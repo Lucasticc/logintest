@@ -43,7 +43,7 @@ class TBlog(models.Model):
     type = models.ForeignKey(BlogType, models.DO_NOTHING, blank=True, null=True)#, db_comment='类型id'
     blog_status = models.IntegerField()#db_comment='博客状态 1为发布 0为草稿'
     create_time = models.DateTimeField()#db_comment='创建时间'
-    update_time = models.DateTimeField()#db_comment='更新时间'
+    update_time = models.DateTimeField(auto_now = True,blank=True, null=True)#db_comment='更新时间'
     cover_image = models.CharField(max_length=255, blank=True, null=True)#, db_comment='封面图片'
 
     class Meta:
