@@ -8,7 +8,7 @@ from datetime import datetime
 # 数据库操作
 def testdb(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username')#123
         password = request.POST.get('password')
         if User.objects.filter(username=username).exists():
             passworddb = User.objects.get(username=username)
