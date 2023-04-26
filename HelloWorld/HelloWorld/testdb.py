@@ -17,8 +17,6 @@ def testdb(request):
                 rep = redirect("/index/")
                 rep.set_cookie("is_login",True)
                 request.session['user1'] = username
-
-
                 return rep
             else:
                 return render(request, 'login.html', {"error": "用户名不存在或密码错误"})
@@ -64,8 +62,10 @@ def upload(request):
         username = request.session.get('user1')
         blog_title = request.POST.get('blog_title')
         blog_content = request.POST.get('blog_content')
-        # id1 = User.objects.filter(username = username).first()[0].id
-        s = TBlog(blog_title=blog_title,blog_content=blog_content,blog_status=1,create_time=datetime.now())
+        type_name = request.POST.get('type')
+        type_id = BlogType.objects.filter(type_name=type_name).first().type_id
+        id = User.objects.filter(username = username).first()
+        s = TBlog(id=id,type_id=type_id,blog_title=blog_title,blog_content=blog_content,blog_status=1,create_time=datetime.now())
         s.save()
         return redirect('/index/')
 
