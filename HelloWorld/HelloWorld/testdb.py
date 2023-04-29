@@ -30,7 +30,13 @@ def index(request):
         if not status:
             return redirect('/login/')
         username = request.session.get('user1')
-        return render(request, "index.html",{'m':username})
+        UserID=User.objects.filter(username=username).first().id
+        details = TBlog.objects.filter(id=UserID).all()
+        temp = []
+        for detail in details:
+            temp.append(detail.blog_title)
+            temp.append(detail.blog_content)
+        return render(request, "index.html",{'m':username,'details':temp})
 
 
 def sign(request):
@@ -69,3 +75,5 @@ def upload(request):
         s.save()
         return redirect('/index/')
 
+def ShowBlogDetail(request):
+    return 
