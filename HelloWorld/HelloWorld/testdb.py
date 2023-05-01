@@ -76,4 +76,7 @@ def upload(request):
         return redirect('/index/')
 
 def ShowBlogDetail(request):
+    if request.method == 'GET':
+        username = request.session.get('use1')
+        
     return 
