@@ -74,7 +74,7 @@ def upload(request):
         s = TBlog(id=id,type_id=type_id,blog_title=blog_title,blog_content=blog_content,blog_status=1,create_time=datetime.now())
         s.save()
         return redirect('/index/')
-
+#未实现
 def ShowBlogDetail(request):
     if request.method == 'GET':
         username = request.session.get('use1')
@@ -86,3 +86,14 @@ def ShowBlogDetail(request):
             temp.append(detail.blog_content)
         return render(request, "index.html",{'m':username,'details':temp})
     return 
+
+def SerchId(request):
+    if request.method == 'POST':
+        username = request.POST.get('User_serch')
+        all_usernames = User.objects.filter(username__contains=username).all()
+        temp = []
+        for all_username in all_usernames:
+            temp.append(all_username.username)
+        return render(request, "index.html",{'follow_usernames':temp})
+
+        

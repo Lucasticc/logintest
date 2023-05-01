@@ -26,4 +26,5 @@ urlpatterns = [
     path('rtin/',testdb.rtin),
     path('logout/', testdb.logout),
     path('upload/', testdb.upload),
+    path('serch/', testdb.SerchId),
 ]
