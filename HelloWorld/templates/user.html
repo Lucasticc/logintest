@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+</head>
+<body>
+ 
+ <div class="content">
+    <div class="up">菜单栏
+        <a href="/logout/">注销</a>
+        关注
+        <form action="/serch/" method="post">
+        {% csrf_token %}
+        <input type="text" id="User_serch" name="User_serch" >
+        <input type="submit" value="搜索" align="center">
+        {{follow_usernames}}
+        <!-- </form> -->
+
+
+
+
+            <h1>欢迎{{m}}登陆主页</h1>
+        <hr>
+   <!-- 单独展一行 -->
+</p>
+    </div>
+<form action="/upload/" method="post">
+    {% csrf_token %}
+    <div class="middle">内容</div>
+    <p class="divs" align ="center">
+        类型1<input type="radio" value="类型1" name="type" checked="checked">
+        类型2<input type="radio" value="类型2" name="type" checked="checked">
+        <br>
+        <label for="username">标题:</label>
+        <input type="text" id="blog_title" name="blog_title" align="center">
+    </p>
+    <p class="divs" align ="center">
+        &nbsp&nbsp&nbsp<label for="blog_content">内容:</label>
+        <input type="text" id="blog_content" name="blog_content" size="130" maxlength="500">
+        <input type="submit" value="提交" align="center">
+    </p>
+    <hr>
+    <div class="dibu">底部</div>
+    {{details}}
+</form>
+ </div>
+
+
+
+
+</body>
+</html>

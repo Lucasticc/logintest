@@ -27,4 +27,5 @@ urlpatterns = [
     path('logout/', testdb.logout),
     path('upload/', testdb.upload),
     path('serch/', testdb.SerchId),
+    path('user/', testdb.SerchIdDetials),
 ]
