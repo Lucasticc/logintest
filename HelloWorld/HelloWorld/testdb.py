@@ -95,5 +95,7 @@ def SerchId(request):
         for all_username in all_usernames:
             temp.append(all_username.username)
         return render(request, "index.html",{'follow_usernames':temp})
-
+def SerchIdDetials(request):
+    if request.method == 'POST':
+        return render()
         
