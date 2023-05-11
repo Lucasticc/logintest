@@ -63,6 +63,9 @@ def logout(request):
     rep.delete_cookie("is_login")
     request.session.flush() # 删除一条记录包括(session_key session_data expire_date)三个字段
     return rep # 点击注销后执行,删除cookie,不再保存用户状态，并弹到登录页面
+def Rindex(request):
+    rep = redirect('/index/')
+    return rep
 #上传
 def upload(request):
     if request.method == 'POST':
@@ -88,6 +91,7 @@ def ShowBlogDetail(request):
         return render(request, "index.html",{'m':username,'details':temp})
     return 
 
+#搜索id
 def SerchId(request):
     if request.method == 'POST':
         username = request.POST.get('User_serch')
@@ -95,7 +99,7 @@ def SerchId(request):
         temp = []
         for all_username in all_usernames:
             temp.append(all_username.username)
-        return render(request, "index.html",{'follow_usernames':temp})
+        return render(request, "user.html",{'follow_usernames':temp})
 def SerchIdDetials(request):
     # if request.method == 'POST':
         return render(request,"user.html")

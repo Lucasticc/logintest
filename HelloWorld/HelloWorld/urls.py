@@ -27,6 +27,7 @@ urlpatterns = [
     path('sign/',testdb.sign),
     path('rtin/',testdb.rtin),
     path('logout/', testdb.logout),
+    path('Rindex/', testdb.Rindex),
     path('upload/', testdb.upload),
     path('serch/', testdb.SerchId),
     path('user/', testdb.SerchIdDetials),
