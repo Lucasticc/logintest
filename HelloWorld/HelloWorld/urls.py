@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views,testdb
+handler404 = testdb.page_not_found
+handler500 = testdb.page_error
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +30,6 @@ urlpatterns = [
     path('upload/', testdb.upload),
     path('serch/', testdb.SerchId),
     path('user/', testdb.SerchIdDetials),
+    
+    
 ]

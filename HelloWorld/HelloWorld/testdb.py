@@ -99,4 +99,12 @@ def SerchId(request):
 def SerchIdDetials(request):
     # if request.method == 'POST':
         return render(request,"user.html")
+
+#404 和500错误提示
+def page_not_found(request,exception=None):
+
+    return render(request,'user/404.html',{})
+def page_error(request,exception=None):
+
+    return render(request, 'user/500.html', {})
         
