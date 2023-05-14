@@ -3,7 +3,9 @@ from django.shortcuts import render, redirect
 # from django.contrib.auth.models import User, auth
 from TestModel.models import User,BlogType,TTag,TBlog
 from datetime import datetime
-
+from django.http import JsonResponse
+from django.core import serializers
+from django.forms.models import model_to_dict
 
 # 数据库操作 登陆
 def testdb(request):
@@ -94,12 +96,22 @@ def ShowBlogDetail(request):
 #搜索id
 def SerchId(request):
     if request.method == 'POST':
+        result ={}
         username = request.POST.get('User_serch')
         all_usernames = User.objects.filter(username__contains=username).all()
+        for username in all_usernames:
+            username = model_to_dict(username) # model对象转dict字典
+            del username['password']
+            return JsonResponse(username)
+            return render(request, "user.html",{'follow_usernames':username})
+
+            # server['server_used_type_id'] = serializers.serialize('python', server['server_used_type_id']) # 外键模型对象需要序列化，或者去除不传递
+            # result["data"].append(server)
         temp = []
         for all_username in all_usernames:
             temp.append(all_username.username)
-        return render(request, "user.html",{'follow_usernames':temp})
+        # json_data = serializers.serialize('json', result)
+        return render(request, "user.html",{'follow_usernames':result})
 def SerchIdDetials(request):
     # if request.method == 'POST':
         return render(request,"user.html")
